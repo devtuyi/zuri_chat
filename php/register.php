@@ -11,7 +11,7 @@ if(isset($_COOKIE["name"])) {
     $name = ucwords(htmlspecialchars(strip_tags($name)));
     if(empty($name) || empty($username) || empty($email) || empty($password) || empty($password) || empty($email)) {
         $_COOKIE["msg"] = "All fields are required";
-    } elseif(preg_match("/[^A-z]/", $name) || strlen($name) < 5) {
+    } elseif(preg_match("/[^A-z\s]/", $name) || strlen($name) < 5) {
         $_COOKIE["msg"] = "Name contains invalid characters<br>Only alphabeths are allowed<br/>Minimun length: 5";
     } elseif(preg_match("/[^A-z0-9\_]/", $username) || strlen($username) < 5) {
         $_COOKIE["msg"] = "Username contains invalid characters<br>Allowed characters: A-z, 0-9, _<br/>Minimun length: 5";
