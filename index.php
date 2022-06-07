@@ -1,6 +1,6 @@
 <?php
 require("./inc/cookie.php");
-	if(!isset($_COOKIE["name"])){
+	if(isset($_COOKIE["name"])){
 		?>
 <html>
 	<head>
