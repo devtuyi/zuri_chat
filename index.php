@@ -1,10 +1,10 @@
 <?php
 require("./inc/cookie.php");
-	if(!isset($_COOKIE["name"])){
+	if(isset($_COOKIE["name"])){
 		?>
 <html>
 	<head>
-		<title>Chat Room Example</title>
+		<title>Chat Room</title>
 		<link rel="stylesheet" href="css/main.css" />
 	</head>
 	<body>
@@ -13,7 +13,6 @@ require("./inc/cookie.php");
 			echo "<div class=\"noti\">{$_COOKIE['msg']}</div>";
 			setcookie("msg", "", -1);
 		} ?>
-		<h1>Please choose a nickname and a color</h1>
 		<form action="php/login.php" method="post">
 			<table cellpadding="5" cellspacing="0" border="0">
 				<tr>
