@@ -7,7 +7,7 @@
 	header("Access-Control-Max-Age: 0");
 	header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 	if(isset($_COOKIE["name"])) {
-		setcookie("lastID", $_COOKIE["lastID"], ($time + 1800), "/", $dom);
+		setcookie("lastID", $_COOKIE["lastID"], (time() + 1800), "/", $dom);
 		$id = intval($_GET["lastID"]);
 		$jsonData = chatClass::getRestChatLines($id);
 		print $jsonData;
