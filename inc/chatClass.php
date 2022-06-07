@@ -9,11 +9,6 @@
       $arr = array();
       $line = new stdClass;
       if(($handle = fopen("./storage/chats.csv", "r")) !== FALSE) {
-        // if($_COOKIE["lastID"] == 0) {
-        //   $id = filesize("./storage/chats.csv");
-        // } else {
-        //   $id = $_COOKIE["lastID"];
-        // }
         fseek($handle, $id);
         while(($data = fgetcsv($handle)) !== FALSE) {
           if($data[2])

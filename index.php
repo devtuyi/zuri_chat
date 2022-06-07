@@ -1,8 +1,25 @@
 <?php
 require("./inc/cookie.php");
-	if(isset($_COOKIE["name"])){
-		?>
+if(isset($_COOKIE["name"])){
+?>
 <html>
+	<head>
+		<title>Chat Room</title>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+		<div id="view_ajax"></div>
+		<div id="ajaxForm">
+			<input type="text" id="chatInput" /><input type="button" value="Send" id="btnSend" />
+		</div>
+	</body>
+</html>
+<html>
+<?php
+	} else {
+?>
 	<head>
 		<title>Chat Room</title>
 		<link rel="stylesheet" href="css/main.css" />
@@ -11,7 +28,7 @@ require("./inc/cookie.php");
 		<?php
 		if(isset($_COOKIE["msg"]) && !empty($_COOKIE["msg"])) {
 			echo "<div class=\"noti\">{$_COOKIE['msg']}</div>";
-			setcookie("msg", "", -1);
+			setcookie("msg", "", -1, "/", $dom);
 		} ?>
 		<form action="php/login.php" method="post">
 			<table cellpadding="5" cellspacing="0" border="0">
@@ -65,23 +82,6 @@ require("./inc/cookie.php");
 				</tr>
 			</table>
 		</form>
-	</body>
-</html>
-<?php
-	}else{
-?>
-<html>
-	<head>
-		<title>Chat Room Example</title>
-		<script src="js/jquery.min.js"></script>
-		<script src="js/main.js"></script>
-		<link rel="stylesheet" href="css/main.css" />
-	</head>
-	<body>
-		<div id="view_ajax"></div>
-		<div id="ajaxForm">
-			<input type="text" id="chatInput" /><input type="button" value="Send" id="btnSend" />
-		</div>
 	</body>
 </html>
 <?php } ?>

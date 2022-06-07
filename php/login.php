@@ -3,7 +3,7 @@ require("../inc/cookie.php");
 if(isset($_COOKIE["name"])) {
     $_COOKIE["msg"] = "Session active";
 } elseif(isset($_POST["submit"])){
-    setcookie("msg", "", -1);
+    setcookie("msg", "", -1, "/", $dom);
     $email = (string) $_POST["email"];
     $password = (string) $_POST["password"];
     $email = strtolower($email);

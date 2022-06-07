@@ -3,7 +3,7 @@ require("../inc/cookie.php");
 if(isset($_COOKIE["name"])) {
     $_COOKIE["msg"] = "Session active";
 } elseif(isset($_POST["submit"])){
-    setcookie("msg", "", -1);
+    setcookie("msg", "", -1, "/", $dom);
     $name = (string) $_POST["name"];
     $username = (string) $_POST["username"];
     $email = (string) $_POST["email"];
@@ -31,9 +31,9 @@ if(isset($_COOKIE["name"])) {
             if(!isset($_COOKIE["msg"])) {
                 fputcsv($handle, [$name, $email, $password, $username]);
                 $time = time();
-                setcookie("name", $name, ($time + 1800));
-                setcookie("username", $username, ($time + 1800));
-                setcookie("lastID", filesize("../storage/chats.csv"), ($time + 1800));
+                setcookie("name", $name, ($time + 1800), "/", $dom);
+                setcookie("username", $username, ($time + 1800), "/", $dom);
+                setcookie("lastID", filesize("../storage/chats.csv"), ($time + 1800), "/", $dom);
                 $_COOKIE["msg"] = "User Successfully registered";
             }
         } else {
