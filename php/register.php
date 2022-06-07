@@ -29,7 +29,7 @@ if(isset($_COOKIE["name"])) {
                 }
             }
             if(!isset($_COOKIE["msg"])) {
-                fputcsv($handle, [$name, $email, $password, $username]);
+                fputcsv($handle, array($name, $email, $password, $username));
                 $time = time();
                 setcookie("name", $name, ($time + 1800), "/", $dom);
                 setcookie("username", $username, ($time + 1800), "/", $dom);
