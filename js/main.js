@@ -45,7 +45,7 @@ function getChatText(){
 		var html = "";
 		for(var i = 0; i < data.length; i++) {
 			var result = JSON.parse(data[i]);
-			html += '<div class="chat_msg"><span class="chat_time" data-time="'+result.chattime+'">' + time_ago(result.chattime)+ '</span> <b class="user_name">@' + result.user_name +'</b>: '+result.chattext+ '</div>';
+			html += '<div class="row"><div class="col-12"><b class="user_name">@'+result.user_name+'</b>: '+result.chattext+'</div><div class="col-12 text-right"><span class="text-muted" style="float: right;" id="chat_time" data-time="'+result.chattime+'">'+time_ago(result.chattime)+'</span></div></div>';
 			lastID = result.id;
 		}
 		$('#view_ajax').append(html);
@@ -81,7 +81,7 @@ function time_ago(time){
 }
 
 function update_time() {
-	var spans = $("span.chat_time");
+	var spans = $("span#chat_time");
 	for(var i = 0; i < spans.length; i++) {
 		$(spans[i]).html(time_ago($(spans[i]).data("time")));
 	}
