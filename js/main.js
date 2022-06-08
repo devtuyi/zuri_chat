@@ -75,7 +75,7 @@ function time_ago(time){
         d = time_difference / _cond[i];
         if(d >= 1) {
             t = Math.ceil( d );
-            return 'about ' + t + ' ' + _cont[i] + ( t > 1 ? 's' : '' ) + ' ago';
+            return t + ' ' + _cont[i] + ( t > 1 ? 's' : '' ) + ' ago';
         }
     }
 }
