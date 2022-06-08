@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -13,7 +16,6 @@
 	</head>
 	<body>
 <?php
-session_start();
 if(isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) {
 	echo "<div class='alert alert-warning alert-dismissible'><button type='button' class='btn-close' data-bs-dismiss='alert'></button>{$_SESSION['msg']}</div>";
 	if($_SESSION["msg"] == "Session closed") {
@@ -55,7 +57,7 @@ if(isset($_COOKIE["name"])){
 					<div class="col-auto">
 						<form action="php/login.php" method="post">
 							<div class="form-floating py-1">
-								<input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+								<input type="text" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
 								<label for="floatingInput">Email address</label>
 							</div>
 							<div class="form-floating py-1">
