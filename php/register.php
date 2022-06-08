@@ -18,6 +18,7 @@ if(isset($_COOKIE["name"])) {
     } elseif(strlen($password) < 5) {
         $msg = "Password is too short<br/>Minimun length: 6";
     } elseif(($handle = fopen("../storage/users.csv", "a+")) !== FALSE) {
+        $username = strtolower($username);
         $email = strtolower($email);
         $password = md5($password);
         if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
