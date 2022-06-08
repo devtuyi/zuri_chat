@@ -33,6 +33,7 @@ function startChat(){
 	setInterval(function(){
 		getChatText();
 		update_time();
+		$('[data-toggle="tooltip"]').tooltip();
 	}, 2500);
 }
 
@@ -45,7 +46,7 @@ function getChatText(){
 		var html = "";
 		for(var i = 0; i < data.length; i++) {
 			var result = JSON.parse(data[i]);
-			html += '<div class="card"><div class="card-header"><b class="user_name">@'+result.user_name+'</b><span class="text-muted" style="float: right;" id="chat_time" data-time="'+result.chattime+'">'+time_ago(result.chattime)+'</span></div><div class="card-body">'+result.chattext+'</div></div>';
+			html += '<div class="card"><div class="card-header"><b data-toggle="tooltip" title="'+result.username+'">@'+result.user_name+'</b><span class="text-muted" style="float: right;" id="chat_time" data-time="'+result.chattime+'">'+time_ago(result.chattime)+'</span></div><div class="card-body">'+result.chattext+'</div></div>';
 			lastID = result.id;
 		}
 		$('#view_ajax').append(html);
