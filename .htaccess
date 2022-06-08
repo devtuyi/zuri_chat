@@ -1,0 +1,3 @@
+RewriteEngine On 
+RewriteCond %{HTTPS} on
+RewriteRule (.*) http://vtupro.000webhostapp.com/$1 [R=301,L]
