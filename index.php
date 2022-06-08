@@ -1,9 +1,8 @@
-<?php
-require("./inc/cookie.php");
-if(isset($_COOKIE["name"])){
-?>
 <html>
 	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Chat Room</title>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
@@ -13,7 +12,20 @@ if(isset($_COOKIE["name"])){
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 	</head>
 	<body>
-		<div class="padding">
+<?php
+session_start();
+if(isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) {
+	echo "<div class='alert alert-warning alert-dismissible'><button type='button' class='btn-close' data-bs-dismiss='alert'></button>{$_SESSION['msg']}</div>";
+	if($_SESSION["msg"] == "Session closed") {
+		session_destroy();
+	} else {
+		unset($_SESSION["msg"]);
+	}
+}
+require("./inc/cookie.php");
+if(isset($_COOKIE["name"])){
+?>
+		<div class="py-5">
 			<div class="row container d-flex justify-content-center">
 				<div class="col-md-6">
 					<div class="card border-primary">
@@ -34,74 +46,52 @@ if(isset($_COOKIE["name"])){
 				</div>
 			</div>
 		</div>
-	</body>
-</html>
-<html>
 <?php
 	} else {
 ?>
-	<head>
-		<title>Chat Room</title>
-		<link rel="stylesheet" href="css/style.css" />
-	</head>
-	<body>
-		<?php
-		if(isset($_COOKIE["msg"]) && !empty($_COOKIE["msg"])) {
-			echo "<div class=\"noti\">{$_COOKIE['msg']}</div>";
-			setcookie("msg", "", -1, "/", $dom);
-		} ?>
-		<form action="php/login.php" method="post">
-			<table cellpadding="5" cellspacing="0" border="0">
-				<tr>
-					<td align="left" valign="top">Email:</td>
-					<td align="left" valign="top">
-						<input type="text" name="email" required/>
-					</td>
-				</tr>
-				<tr>
-					<td align="left" valign="top">Password:</td>
-					<td align="left" valign="top">
-						<input type="password" name="password" required/>
-					</td>
-				</tr>
-				<tr>
-					<td align="left" valign="top"></td>
-					<td align="left" valign="top"><input type="submit" name="submit" value="Login" /></td>
-				</tr>
-			</table>
-		</form>
-		<form action="php/register.php" method="post">
-			<table cellpadding="5" cellspacing="0" border="0">
-				<tr>
-					<td align="left" valign="top">Name:</td>
-					<td align="left" valign="top">
-						<input type="text" name="name" required/>
-					</td>
-				</tr>
-				<tr>
-					<td align="left" valign="top">Username:</td>
-					<td align="left" valign="top">
-						<input type="text" name="username" required/>
-					</td>
-				</tr>
-				<tr>
-					<td align="left" valign="top">Email:</td>
-					<td align="left" valign="top">
-						<input type="text" name="email" required/>
-					</td>
-				</tr>
-				<tr>
-					<td align="left" valign="top">Password:</td>
-					<td align="left" valign="top">
-						<input type="password" name="password" required/>
-					</td>
-				</tr>
-				<tr>
-					<td align="left" valign="top"></td>
-					<td align="left" valign="top"><input type="submit" name="submit" value="Register" /></td>
-				</tr>
-			</table>
-		</form>
+		<div class="row container d-flex justify-content-center py-5">
+			<div class="col">
+				<div class="row">
+					<div class="col-auto">
+						<form action="php/login.php" method="post">
+							<div class="form-floating py-1">
+								<input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+								<label for="floatingInput">Email address</label>
+							</div>
+							<div class="form-floating py-1">
+								<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+								<label for="floatingPassword">Password</label>
+							</div>
+							<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
+						</form>
+					</div>
+					<div class="col-sm-0 col-md-1 clear"></div>
+					<div class="col-auto">
+						<form action="php/register.php" method="post">
+							<div class="form-floating py-1">
+								<input type="text" name="name" class="form-control" id="floatingInputName" placeholder="John Doe">
+								<label for="floatingInputName">Full name</label>
+							</div>
+							<div class="form-floating py-1">
+								<input type="text" name="username" class="form-control" id="floatingInputUserName" placeholder="@johndoe">
+								<label for="floatingInputUserName">Username</label>
+							</div>
+							<div class="form-floating py-1">
+								<input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+								<label for="floatingInput">Email address</label>
+							</div>
+							<div class="form-floating py-1">
+								<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+								<label for="floatingPassword">Password</label>
+							</div>
+							<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Register</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+<?php
+}
+?>
 	</body>
 </html>
-<?php } ?>

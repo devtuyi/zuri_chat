@@ -1,9 +1,9 @@
 <?php
+session_start();
 require("../inc/cookie.php");
 if(isset($_COOKIE["name"])) {
-    $_COOKIE["msg"] = "Session active";
+    $msg = "Session active";
 } elseif(isset($_POST["submit"])){
-    setcookie("msg", "", -1, "/", $dom);
     $email = (string) $_POST["email"];
     $password = (string) $_POST["password"];
     $email = strtolower($email);
@@ -16,22 +16,23 @@ if(isset($_COOKIE["name"])) {
                         setcookie("name", $data[0], ($time + 1800), "/", $dom);
                         setcookie("username", $data[3], ($time + 1800), "/", $dom);
                         setcookie("lastID", filesize("../storage/chats.csv"), ($time + 1800), "/", $dom);
-                        $_COOKIE["msg"] = "Login successful";
+                        $msg = "Login successful";
                     } else {
-                        $_COOKIE["msg"] = "Incorrect password";
+                        $msg = "Incorrect password";
                     }
                 }
             }
-            $_COOKIE["msg"] = isset($_COOKIE["msg"]) ? $_COOKIE["msg"] : "User not registered";
+            $msg = isset($msg) ? $msg : "User not registered";
         } else {
-            $_COOKIE["msg"] = "Invalid email address";
+            $msg = "Invalid email address";
         }
         fclose($handle);
     } else {
-        $_COOKIE["msg"] = "Internal error";
+        $msg = "Internal error";
     }
 } else {
-    $_COOKIE["msg"] = "Access denied";
+    $msg = "Access denied";
 }
+$_SESSION["msg"] = $msg;
 header("Location: ../index.php");
 ?>
