@@ -29,6 +29,9 @@ $(document).ready(function() {
 	if($("#btnSend").length > 0) {
 		startChat();
 	}
+	setTimeout(function(){
+		$(".alert").remove();
+	}, 5000);
 });
 
 function startChat(){
