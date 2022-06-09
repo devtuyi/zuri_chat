@@ -7,7 +7,9 @@ if(isset($_COOKIE["name"])) {
     $email = (string) $_POST["email"];
     $password = (string) $_POST["password"];
     $email = strtolower($email);
-    if(($handle = fopen("../storage/users.csv", "r")) !== FALSE) {
+    if(empty($email) || empty($password)) {
+        $msg = "All fields are required";
+    } elseif(($handle = fopen("../storage/users.csv", "r")) !== FALSE) {
         while(($data = fgetcsv($handle)) !== FALSE) {
             if($data[1] == $email || $data[3] == $email) {
                 if($data[2] == md5($password)) {
