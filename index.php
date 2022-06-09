@@ -17,7 +17,11 @@ session_start();
 	<body>
 <?php
 if(isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) {
-	echo "<div class='alert alert-warning alert-dismissible'><button type='button' class='btn-close' data-bs-dismiss='alert'></button>{$_SESSION['msg']}</div>";
+	if(strpos($_SESSION["msg"], "successful") !== false && !isset($_COOKIE["name"])) {
+		echo "<div class='alert alert-danger'>Enable cookies in your browser</div>";
+	} else {
+		echo "<div class='alert alert-warning'>{$_SESSION['msg']}</div>";
+	}
 	if($_SESSION["msg"] == "Session closed") {
 		session_destroy();
 	} else {
