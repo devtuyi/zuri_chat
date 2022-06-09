@@ -26,7 +26,9 @@ $(document).ready(function() {
 			$('#chatInput').val("").focus();
 		}
 	});
-	startChat();
+	if($("#btnSend").length > 0) {
+		startChat();
+	}
 });
 
 function startChat(){
