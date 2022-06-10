@@ -1,4 +1,7 @@
 #view_ajax{
 	overflow: hidden auto;
 	height: 300px; 
-  }
+}
+.disclaimer {
+	z-index: -1 !important;
+}

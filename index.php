@@ -57,7 +57,7 @@ if(isset($_COOKIE["name"])){
 		<div class="row container d-flex justify-content-center py-5">
 			<div class="col">
 				<div class="row">
-					<div class="col-auto">
+					<div class="col-md-6">
 						<form action="php/login.php" method="post">
 							<div class="form-floating py-1">
 								<input type="text" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -70,8 +70,7 @@ if(isset($_COOKIE["name"])){
 							<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
 						</form>
 					</div>
-					<div class="col-sm-0 col-md-1 clear"></div>
-					<div class="col-auto">
+					<div class="col-md-6">
 						<form action="php/register.php" method="post">
 							<div class="form-floating py-1">
 								<input type="text" name="name" class="form-control" id="floatingInputName" placeholder="John Doe">
