@@ -60,11 +60,11 @@ if(isset($_COOKIE["name"])){
 					<div class="col-md-6">
 						<form action="php/login.php" method="post">
 							<div class="form-floating py-1">
-								<input type="text" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+								<input type="text" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
 								<label for="floatingInput">Email address</label>
 							</div>
 							<div class="form-floating py-1">
-								<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+								<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
 								<label for="floatingPassword">Password</label>
 							</div>
 							<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
@@ -73,19 +73,19 @@ if(isset($_COOKIE["name"])){
 					<div class="col-md-6">
 						<form action="php/register.php" method="post">
 							<div class="form-floating py-1">
-								<input type="text" name="name" class="form-control" id="floatingInputName" placeholder="John Doe">
+								<input type="text" name="name" class="form-control" id="floatingInputName" placeholder="John Doe" required>
 								<label for="floatingInputName">Full name</label>
 							</div>
 							<div class="form-floating py-1">
-								<input type="text" name="username" class="form-control" id="floatingInputUserName" placeholder="@johndoe">
+								<input type="text" name="username" class="form-control" id="floatingInputUserName" placeholder="@johndoe" required>
 								<label for="floatingInputUserName">Username</label>
 							</div>
 							<div class="form-floating py-1">
-								<input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+								<input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
 								<label for="floatingInput">Email address</label>
 							</div>
 							<div class="form-floating py-1">
-								<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+								<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
 								<label for="floatingPassword">Password</label>
 							</div>
 							<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Register</button>
