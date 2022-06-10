@@ -28,7 +28,6 @@ if(isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) {
 		unset($_SESSION["msg"]);
 	}
 }
-require("./inc/cookie.php");
 if(isset($_COOKIE["name"])){
 ?>
 		<div class="py-5">

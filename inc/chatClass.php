@@ -25,10 +25,9 @@
     }
     
     public static function setChatLines($username, $user_name, $chattext) {
-      $time = time();
       $chattext = strip_tags($chattext);
       if(!empty($chattext) && ($handle = fopen("./storage/chats.csv", "a")) !== FALSE) {
-          fputcsv($handle, array($username, $user_name, $time, $chattext));
+          fputcsv($handle, array($username, $user_name, time(), $chattext));
           fclose($handle);
       }
     }

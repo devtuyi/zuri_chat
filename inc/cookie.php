@@ -16,4 +16,5 @@ function getDomain() {
     return $dom;
 }
 $dom = getDomain();
+$time = time() + 1800;
 ?>

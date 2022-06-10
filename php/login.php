@@ -13,14 +13,14 @@ if(isset($_COOKIE["name"])) {
         while(($data = fgetcsv($handle)) !== FALSE) {
             if($data[1] == $email || $data[3] == $email) {
                 if($data[2] == md5($password)) {
-                    $time = time();
-                    setcookie("name", $data[0], ($time + 1800), "/", $dom);
-                    setcookie("username", $data[3], ($time + 1800), "/", $dom);
-                    setcookie("lastID", filesize("../storage/chats.csv"), ($time + 1800), "/", $dom);
+                    setcookie("name", $data[0], $time, "/", $dom);
+                    setcookie("username", $data[3], $time, "/", $dom);
+                    setcookie("lastID", filesize("../storage/chats.csv"), $time, "/", $dom);
                     $msg = "Login successful";
                 } else {
                     $msg = "Incorrect password";
                 }
+                break;
             }
         }
         $msg = isset($msg) ? $msg : "User not registered";

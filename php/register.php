@@ -25,16 +25,17 @@ if(isset($_COOKIE["name"])) {
             while(($data = fgetcsv($handle)) !== FALSE) {
                 if($data[1] == $email) {
                     $msg = "Email exist";
+                    break;
                 } elseif($data[3] == $username) {
                     $msg = "Username exist";
+                    break;
                 }
             }
             if(!isset($msg)) {
                 fputcsv($handle, array($name, $email, $password, $username));
-                $time = time();
-                setcookie("name", $name, ($time + 1800), "/", $dom);
-                setcookie("username", $username, ($time + 1800), "/", $dom);
-                setcookie("lastID", filesize("../storage/chats.csv"), ($time + 1800), "/", $dom);
+                setcookie("name", $name, $time, "/", $dom);
+                setcookie("username", $username, $time, "/", $dom);
+                setcookie("lastID", filesize("../storage/chats.csv"), $time, "/", $dom);
                 $msg = "User Successfully registered";
             }
         } else {
