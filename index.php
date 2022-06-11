@@ -24,7 +24,7 @@ if(isset($_SESSION["name"])){
 ?>
 		<div class="py-5">
 			<div class="row container d-flex justify-content-center">
-				<div class="col-md-6">
+				<div class="col-md-10">
 					<div class="card border-primary">
 						<div class="card-header">
 							<span class="pull-left"><strong>Chat</strong></span>

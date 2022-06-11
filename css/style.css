@@ -1,6 +1,7 @@
 #view_ajax{
 	overflow: hidden auto;
-	height: 300px; 
+	height: 70vh;
+	scrollbar-width: thin;
 }
 .disclaimer {
 	z-index: -1 !important;
