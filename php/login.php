@@ -1,7 +1,6 @@
 <?php
 session_start();
-require("../inc/cookie.php");
-if(isset($_COOKIE["name"])) {
+if(isset($_SESSION["name"])) {
     $msg = "Session active";
 } elseif(isset($_POST["submit"])){
     $email = (string) $_POST["email"];
@@ -13,9 +12,9 @@ if(isset($_COOKIE["name"])) {
         while(($data = fgetcsv($handle)) !== FALSE) {
             if($data[1] == $email || $data[3] == $email) {
                 if($data[2] == md5($password)) {
-                    setcookie("name", $data[0], $time, "/", $dom);
-                    setcookie("username", $data[3], $time, "/", $dom);
-                    setcookie("lastID", filesize("../storage/chats.csv"), $time, "/", $dom);
+                    $_SESSION["name"] = $data[0];
+                    $_SESSION["username"] = $data[3];
+                    $_SESSION["lastID"] = filesize("../storage/chats.csv");
                     $msg = "Login successful";
                 } else {
                     $msg = "Incorrect password";

@@ -1,11 +1,7 @@
 <?php
 session_start();
-require("../inc/cookie.php");
-if(isset($_COOKIE["name"])) {
-    setcookie("name", "", -1, "/", $dom);
-    setcookie("username", "", -1, "/", $dom);
-    setcookie("lastID", 0, -1, "/", $dom);
-    $_SESSION["msg"] = "Session closed";
+if(isset($_SESSION["name"])) {
+    session_destroy();
 }
 header("Location: ../index.php");
 ?>

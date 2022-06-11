@@ -1,20 +1,3 @@
-function getCookie(cname) {
-	let name = cname + "=";
-	let decodedCookie = decodeURIComponent(document.cookie);
-	let ca = decodedCookie.split(';');
-	for(let i = 0; i <ca.length; i++) {
-	  let c = ca[i];
-	  while (c.charAt(0) == ' ') {
-		c = c.substring(1);
-	  }
-	  if (c.indexOf(name) == 0) {
-		return c.substring(name.length, c.length);
-	  }
-	}
-	return "";
-  }
-var lastID = getCookie("lastID") == "" ? 0 : getCookie("lastID");
-
 $(document).ready(function() {
 	$("#btnSend").click(function(){
 		sendChatText();
@@ -43,27 +26,26 @@ function startChat(){
 }
 
 function getChatText(){
-	if(getCookie("lastID") == "") {
-		window.location = window.location.href;
-	} else {
-		var boxH = $("#view_ajax")[0].scrollHeight - 20;
-		$.ajax({
-			type: "GET",
-			url: "refresh.php?lastID="+lastID
-		}).done(function(data) {
+	var boxH = $("#view_ajax")[0].scrollHeight - 20;
+	$.ajax({
+		type: "GET",
+		url: "php/refresh.php?_t="+(new Date().getTime())
+	}).done(function(data) {
+		if(data.data === false) {
+			window.location = window.location.href;
+		} else {
 			var html = "";
-			for(var i = 0; i < data.length; i++) {
+			for(var i = 1; i < data.length; i++) {
 				var result = JSON.parse(data[i]);
 				html += '<div class="card"><div class="card-header"><b data-toggle="tooltip" title="'+result.username+'">@'+result.user_name+'</b><span class="text-muted" style="float: right;" id="chat_time" data-time="'+result.chattime+'">'+time_ago(result.chattime)+'</span></div><div class="card-body">'+result.chattext+'</div></div>';
-				lastID = result.id;
 			}
 			$('#view_ajax').append(html);
 			var _boxH = $("#view_ajax")[0].scrollHeight - 20;
 			if(_boxH > boxH) {
 				$("#view_ajax").animate({ scrollTop: _boxH }, 'normal');
-			}   
-		});
-	}
+			}
+		}
+	});
 }
 
 function sendChatText(){
@@ -71,7 +53,7 @@ function sendChatText(){
 	if(chatInput != ""){
 		$.ajax({
 			type: "POST",
-			url: "submit.php",
+			url: "php/submit.php",
 			data: {"chattext": chatInput}
 		}).done(function(data) {
 			if(data.data == false) {
