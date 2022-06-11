@@ -11,7 +11,6 @@
       if(($handle = fopen("./storage/chats.csv", "r")) !== FALSE) {
         fseek($handle, $id);
         while(($data = fgetcsv($handle)) !== FALSE) {
-          if($data[2])
           $line->id = ftell($handle);
           $line->username = $data[0];
           $line->user_name = $data[1];
