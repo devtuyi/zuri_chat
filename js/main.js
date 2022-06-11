@@ -28,8 +28,9 @@ function startChat(){
 function getChatText(){
 	var boxH = $("#view_ajax")[0].scrollHeight - 20;
 	$.ajax({
-		type: "GET",
-		url: "php/refresh.php?_t="+(new Date().getTime())
+		type: "POST",
+		url: "php/refresh.php?_t="+(new Date().getTime()),
+		data: {"_l": $("#view_ajax").children().length}
 	}).done(function(data) {
 		if(data.data === false) {
 			window.location = window.location.href;

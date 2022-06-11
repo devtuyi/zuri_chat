@@ -1,5 +1,6 @@
 <?php
 session_start();
+require("chatClass.php");
 if(isset($_SESSION["name"])) {
     $msg = "Session active";
 } elseif(isset($_POST["submit"])){
@@ -32,10 +33,11 @@ if(isset($_SESSION["name"])) {
             }
             if(!isset($msg)) {
                 fputcsv($handle, array($name, $email, $password, $username));
-                setcookie(session_name(), session_id(), time()+1800);
                 $_SESSION["name"] = $name;
                 $_SESSION["username"] = $username;
+                $_SESSION["firstID"] = filesize("../storage/chats.csv");
                 $_SESSION["lastID"] = filesize("../storage/chats.csv");
+                chatClass::setOnline();
                 $msg = "User Successfully registered";
             }
         } else {
