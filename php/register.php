@@ -32,6 +32,7 @@ if(isset($_SESSION["name"])) {
             }
             if(!isset($msg)) {
                 fputcsv($handle, array($name, $email, $password, $username));
+                setcookie(session_name(), session_id(), time()+1800);
                 $_SESSION["name"] = $name;
                 $_SESSION["username"] = $username;
                 $_SESSION["lastID"] = filesize("../storage/chats.csv");
