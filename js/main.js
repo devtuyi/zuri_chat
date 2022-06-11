@@ -65,7 +65,7 @@ function sendChatText(){
 }
 
 function time_ago(time){
-    var time_difference = ((new Date().getTime()) / 1000) - time;
+    var time_difference = Math.floor(new Date().getTime() / 1000) - time;
     if(time_difference < 1) { return 'just now'; }
 	var _cond = [31104000, 2592000, 86400, 3600, 60, 1];
     var _cont = ['year', 'month', 'day', 'hour', 'minute', 'second'];
