@@ -12,6 +12,7 @@ if(isset($_SESSION["name"])) {
         while(($data = fgetcsv($handle)) !== FALSE) {
             if($data[1] == $email || $data[3] == $email) {
                 if($data[2] == md5($password)) {
+                    setcookie(session_name(), session_id(), time()+1800);
                     $_SESSION["name"] = $data[0];
                     $_SESSION["username"] = $data[3];
                     $_SESSION["lastID"] = filesize("../storage/chats.csv");
