@@ -16,7 +16,7 @@ session_start();
 	</head>
 	<body>
 <?php
-if(isset($_SESSION["msg"]) && !empty($_SESSION["msg"])) {
+if(isset($_SESSION["msg"])) {
 	echo "<div class='alert alert-warning'>{$_SESSION['msg']}</div>";
 	unset($_SESSION["msg"]);
 }
