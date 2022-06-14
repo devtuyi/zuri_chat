@@ -4,11 +4,7 @@ class chatClass {
     $arr = array();
     $line = new stdClass;
     $i = 1;
-    if(!file_exists("../storage/chats.csv")) {
-      $handle = fopen("../storage/chats.csv", "w");
-      fclose($handle);
-    }
-    if(($handle = fopen("../storage/chats.csv", "r")) !== FALSE && isset($_SESSION["firstID"])) {
+    if(($handle = fopen("../storage/chats.csv", "a+")) !== FALSE && isset($_SESSION["firstID"])) {
       fseek($handle, $_SESSION["firstID"]);
       $arr[] = array("data", true);
       while(($data = fgetcsv($handle)) !== FALSE) {
