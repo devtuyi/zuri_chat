@@ -6,4 +6,4 @@ You don't have to use any form of database, but when I close my browser and I re
 You can deploy anywhere you like, but you'll be required to submit both the code and the deployed testable link.
 @channel Use any library or framework or language that you are comfortable with
 
-Deployment link [http://vtupro.000webhostapp.com](http://vtupro.000webhostapp.com?_v=1.0.1)
+[Deployment link](http://vtupro.000webhostapp.com/zuri/chat/?_v=1.0.1)
