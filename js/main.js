@@ -1,29 +1,21 @@
 $(document).ready(function() {
 	$("#btnSend").click(function(){
 		sendChatText();
-		$('#chatInput').val("").focus();
 	});
 	$("#chatInput").on("keypress", function(e){
 		if(e.keyCode == 13) {
 			sendChatText();
-			$('#chatInput').val("").focus();
 		}
 	});
-	if($("#btnSend").length > 0) {
-		startChat();
-	}
-	setTimeout(function(){
-		$(".alert").hide();
-	}, 5000);
-});
-
-function startChat(){
-	setInterval(function(){
+        setInterval(function(){
 		getChatText();
 		update_time();
 		$('[data-toggle="tooltip"]').tooltip();
 	}, 2500);
-}
+	setTimeout(function(){
+		$(".alert").hide();
+	}, 5000);
+});
 
 function getChatText(){
 	var boxH = $("#view_ajax")[0].scrollHeight - 20;
@@ -60,6 +52,7 @@ function sendChatText(){
 			if(data.data == false) {
 				window.location = window.location.href;
 			}
+			$('#chatInput').val("").focus();
 		});
 	}
 }
